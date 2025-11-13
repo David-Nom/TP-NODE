@@ -1,5 +1,8 @@
+// Router Express = permet de créer des routes séparées
 const express = require('express');
 const router = express.Router();
+
+// On importe les fonctions du contrôleur
 const {
   createProduct,
   getAllProducts,
@@ -8,19 +11,23 @@ const {
   deleteProduct,
 } = require('../controllers/product.controller');
 
-// POST /products
+// On dit simplement :
+// "si quelqu’un appelle POST /products → exécute createProduct"
+
+// Créer un produit
 router.post('/', createProduct);
 
-// GET /products
+// Lire tous les produits
 router.get('/', getAllProducts);
 
-// GET /products/:id
+// Lire 1 produit
 router.get('/:id', getProductById);
 
-// PUT /products/:id
+// Modifier un produit
 router.put('/:id', updateProduct);
 
-// DELETE /products/:id
+// Supprimer un produit
 router.delete('/:id', deleteProduct);
 
+// On exporte pour utiliser ces routes ailleurs
 module.exports = router;
